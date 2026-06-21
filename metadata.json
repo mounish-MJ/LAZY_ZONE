@@ -1,6 +1,0 @@
-{
-  "name": "Lazy Zone",
-  "description": "A gamified fitness tracker featuring custom diet & workout planning, social leaderboard high-scores, wearable sync integrations, reminders, and a Grok AI fitness coach.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
