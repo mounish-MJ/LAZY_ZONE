@@ -1,0 +1,89 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile with fit stats and system settings",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "avatarUrl": { "type": "string" },
+        "onboarded": { "type": "boolean" },
+        "weight": { "type": "number" },
+        "height": { "type": "number" },
+        "age": { "type": "number" },
+        "gender": { "type": "string" },
+        "goal": { "type": "string" },
+        "dietPreference": { "type": "string" },
+        "activityLevel": { "type": "string" },
+        "experienceLevel": { "type": "string" },
+        "equipment": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "dailyCaloriesTarget": { "type": "number" },
+        "dailyProteinTarget": { "type": "number" },
+        "dailyCarbsTarget": { "type": "number" },
+        "dailyFatTarget": { "type": "number" },
+        "remindersEnabled": { "type": "boolean" },
+        "reminderChannel": { "type": "string" },
+        "reminderTimeMeal": { "type": "string" },
+        "reminderTimeWorkout": { "type": "string" },
+        "occupation": { "type": "string" },
+        "countryStyle": { "type": "string" },
+        "language": { "type": "string" }
+      },
+      "required": ["id", "email", "onboarded"]
+    },
+    "FoodLogItem": {
+      "title": "FoodLogItem",
+      "description": "Logged healthy food and calories",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "calories": { "type": "number" },
+        "protein": { "type": "number" },
+        "carbs": { "type": "number" },
+        "fat": { "type": "number" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "userId", "name", "calories"]
+    },
+    "WorkoutRoutine": {
+      "title": "WorkoutRoutine",
+      "description": "Workout program or active exercises",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "intensity": { "type": "string" },
+        "exercises": {
+          "type": "array",
+          "items": { "type": "object" }
+        },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "title"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Collection of athlete profile entries."
+    },
+    "/users/{userId}/meals/{mealId}": {
+      "schema": "FoodLogItem",
+      "description": "User specific meal consumption logs."
+    },
+    "/users/{userId}/routines/{routineId}": {
+      "schema": "WorkoutRoutine",
+      "description": "User customized physical exercising design routines."
+    }
+  }
+}
